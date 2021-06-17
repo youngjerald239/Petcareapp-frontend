@@ -5,7 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  justify-content: center;
+  align-items: center;
+  max-width: fit-content;
+  max-height: fit-content;
 }
 
 code {

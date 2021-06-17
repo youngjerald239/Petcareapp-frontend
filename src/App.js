@@ -4,6 +4,9 @@ import "materialize-css"
 import AllPosts from "./pages/AllPosts";
 import SinglePost from "./pages/SinglePost";
 import Form from "./pages/Form";
+import { Widget, addResponseMessage, addLinkSnippet, addUserMessage  } from 'react-chat-widget';
+ 
+import 'react-chat-widget/lib/styles.css';
 
 // Import React and hooks
 import React, { useState, useEffect } from "react";
@@ -11,7 +14,19 @@ import React, { useState, useEffect } from "react";
 // Import components from React Router
 import { Route, Switch, Link } from "react-router-dom";
 
+
+
+
 function App(props) {
+  useEffect(() => {
+    addResponseMessage('Welcome to The Kat & KaPoodle chat section!');
+  }, []);
+
+  const handleNewUserMessage = (newMessage) => {
+    console.log(`New message incoming! ${newMessage}`);
+    // Now send the message throught the backend API
+    
+  };
   ////////////////////
   // Style Objects
   ////////////////////
@@ -22,8 +37,8 @@ function App(props) {
   };
 
   const button = {
-    backgroundColor: "navy",
-    display: "block",
+    backgroundColor: "rgb(0,150,136)",
+    display: "flex",
     margin: "auto",
   };
 
@@ -116,21 +131,28 @@ const deletePet = async (pet) => {
   /////////////////////
   // returned JSX
   /////////////////////
+
+  
+  
   return (
-    <div className="App" style={{backgroundColor:"gray"}}>
-    <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo center">Logo</a>
+    <div className="App" style={{backgroundColor:"#ea80fc "}}>
+   <nav>
+    <div class="nav-wrapper" style={{backgroundColor:"#880e4f"}}>
+      <a href="/" class="brand-logo center" style={{color:"rgb(0,150,136)", fontWeight: "600", fontSize: "50px"}}>The Kat & KaPoodle</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">JavaScript</a></li>
+        <li><a href="/mypets">My Pets</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/">Login</a></li>
       </ul>
     </div>
   </nav>
+  <Widget handleNewUserMessage={handleNewUserMessage}
+          profileAvatar={"https://images.unsplash.com/photo-1568572933382-74d440642117?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"}
+          title="Welcome to our chat section"
+          subtitle="See what others have to say"/>
       
-      <Link to="/new"><button style={button}>Create New Pet</button></Link>
       <div className="routes">
+      <Link to="/new"><button style={button}>Create New Pet</button></Link>
       <Switch>
         <Route
           exact
@@ -155,9 +177,23 @@ const deletePet = async (pet) => {
         buttonLabel="update pet"/>}
         />
       </Switch>
+      <Link to="/new"><button style={button}>Create New Pet</button></Link>
       </div>
+      <footer class="page-footer" style={{backgroundColor:"#880e4f"}}>
+          <div class="container">
+            <div class="row">
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2021 Copyright Jerald Young
+            <a class="grey-text text-lighten-4 right" href="/">Home</a>
+            </div>
+          </div>
+        </footer>
     </div>
   );
 }
+
 
 export default App;

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../App.css"
 
 // destructuring the props needed to get our post, including router prop match
 const SinglePost = ({ posts, match, edit, deletePet }) => {
@@ -7,18 +8,30 @@ const SinglePost = ({ posts, match, edit, deletePet }) => {
   const post = posts.find((post) => post?.id === id)
 
   return (
-      <div className="single_post">
-          <h1>{post?.name}</h1>
+      <div className="single_post" style={{padding: "200px"}}>
+      <div class="col s12 m7">
+      <h1 class="header" style={{color: "rgb(0,150,136)", fontWeight: "600"}}>{post?.name}</h1>
+      <div class="card horizontal">
+      <div class="card-image">
           <img src={post?.image}/>
-          <h2>{post?.breed}</h2>
-          <h2>{post?.age}</h2>
+          </div>
+          <div class="card-stacked">
+          <div class="card-content">
+          <h2 style={{color: "rgb(0,150,136)", fontWeight: "300"}}>{post?.breed}</h2>
+          <h3 style={{color: "rgb(0,150,136)", fontWeight: "600"}}>Age:{post?.age}</h3>
           <h2>{post?.adopted}</h2>
-          <p>{post?.petcare}</p>
+          <p style={{color: "white", fontWeight: "600"}}>{post?.petcare}</p>
+          <div class="card-action">
           <button onClick={(event) => edit(post)}>Edit</button>
           <button onClick={(event) => deletePet(post)}>Delete</button>
           <Link to="/">
               <button>Go Back</button>
           </Link>
+          </div>
+          </div>
+      </div>
+      </div>
+      </div>
       </div>
   )
 }
