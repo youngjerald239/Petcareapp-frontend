@@ -11,8 +11,8 @@ const SinglePost = ({ posts, match, edit, deletePet }) => {
       <div className="single_post" style={{padding: "200px"}}>
       <div class="col s12 m7">
       <h1 class="header" style={{color: "rgb(0,150,136)", fontWeight: "600"}}>{post?.name}</h1>
-      <div class="card horizontal">
-      <div class="card-image">
+      <div class="card horizontal" style={{backgroundColor: "rgb(0,150,136)"}}>
+      <div class="card-image2" style={{overflow:"hidden"}}>
           <img src={post?.image}/>
           </div>
           <div class="card-stacked">

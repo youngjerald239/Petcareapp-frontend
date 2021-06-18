@@ -5,7 +5,7 @@ import AllPosts from "./pages/AllPosts";
 import SinglePost from "./pages/SinglePost";
 import Form from "./pages/Form";
 import { Widget, addResponseMessage, addLinkSnippet, addUserMessage  } from 'react-chat-widget';
- 
+import FormLog from "./pages/FormLog";
 import 'react-chat-widget/lib/styles.css';
 
 // Import React and hooks
@@ -137,12 +137,12 @@ const deletePet = async (pet) => {
   return (
     <div className="App" style={{backgroundColor:"#ea80fc "}}>
    <nav>
-    <div class="nav-wrapper" style={{backgroundColor:"#880e4f"}}>
-      <a href="/" class="brand-logo center" style={{color:"rgb(0,150,136)", fontWeight: "600", fontSize: "50px"}}>The Kat & KaPoodle</a>
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="/mypets">My Pets</a></li>
-        <li><a href="/profile">Profile</a></li>
-        <li><a href="/">Login</a></li>
+    <div className="nav-wrapper" style={{backgroundColor:"#7e57c2"}}>
+      <a href="/" className="brand-logo center" style={{color:"rgb(3,169,242)", fontWeight: "500", fontSize: "40px"}}>The Kat & KaPoodle</a>
+      <ul id="nav-mobile" className="left hide-on-med-and-down">
+        <li><a href="/mypets" style={{color:"rgb(3,169,242)", fontWeight: "500", fontSize: "20px"}}>My Pets</a></li>
+        <li><a href="/profile" style={{color:"rgb(3,169,242)", fontWeight: "500", fontSize: "20px", paddingRight:"2px"}}>Profile</a></li>
+        <li><a href="/signup" style={{color:"rgb(3,169,242)", fontWeight: "500", fontSize: "20px", paddingRight:"2px"}}>Sign up</a></li>
       </ul>
     </div>
   </nav>
@@ -150,9 +150,13 @@ const deletePet = async (pet) => {
           profileAvatar={"https://images.unsplash.com/photo-1568572933382-74d440642117?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"}
           title="Welcome to our chat section"
           subtitle="See what others have to say"/>
-      
+          <div className="title">
+      <h1 style={{display:"flex", paddingRight:"250px", color:"#7e57c2"}}> Browse Potential Pets! </h1>
+      </div>
       <div className="routes">
-      <Link to="/new"><button style={button}>Create New Pet</button></Link>
+      <Route
+        path="/signup"
+        render={(routerProps) => <FormLog/>}/>
       <Switch>
         <Route
           exact
@@ -179,15 +183,15 @@ const deletePet = async (pet) => {
       </Switch>
       <Link to="/new"><button style={button}>Create New Pet</button></Link>
       </div>
-      <footer class="page-footer" style={{backgroundColor:"#880e4f"}}>
-          <div class="container">
-            <div class="row">
+      <footer className="page-footer" style={{backgroundColor:"#7e57c2"}}>
+          <div className="container">
+            <div className="row">
             </div>
           </div>
-          <div class="footer-copyright">
-            <div class="container">
+          <div className="footer-copyright">
+            <div className="container" style={{color:"lightblue"}}>
             © 2021 Copyright Jerald Young
-            <a class="grey-text text-lighten-4 right" href="/">Home</a>
+            <a className="light-blue-text 4 right" href="/">Home</a>
             </div>
           </div>
         </footer>
