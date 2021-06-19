@@ -138,20 +138,22 @@ const deletePet = async (pet) => {
     <div className="App" style={{backgroundColor:"#ea80fc "}}>
    <nav>
     <div className="nav-wrapper" style={{backgroundColor:"#7e57c2"}}>
-      <a href="/" className="brand-logo center" style={{color:"rgb(3,169,242)", fontWeight: "500", fontSize: "40px"}}>The Kat & KaPoodle</a>
-      <ul id="nav-mobile" className="left hide-on-med-and-down">
+      <a href="/" className="brand-logo center" style={{color:"rgb(3,169,242)", fontWeight: "500", fontSize: "40px"}}><img style={{height:"45px"}} src="https://i.imgur.com/P1sZd9S.png?1"></img>The Kat & KaPoodle</a>
+      <ul id="nav-mobile" className="right hide-on-med-and-down">
         <li><a href="/mypets" style={{color:"rgb(3,169,242)", fontWeight: "500", fontSize: "20px"}}>My Pets</a></li>
         <li><a href="/profile" style={{color:"rgb(3,169,242)", fontWeight: "500", fontSize: "20px", paddingRight:"2px"}}>Profile</a></li>
         <li><a href="/signup" style={{color:"rgb(3,169,242)", fontWeight: "500", fontSize: "20px", paddingRight:"2px"}}>Sign up</a></li>
       </ul>
     </div>
   </nav>
+  <div className="widget">
   <Widget handleNewUserMessage={handleNewUserMessage}
           profileAvatar={"https://images.unsplash.com/photo-1568572933382-74d440642117?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"}
           title="Welcome to our chat section"
           subtitle="See what others have to say"/>
+          </div>
           <div className="title">
-      <h1 style={{display:"flex", paddingRight:"250px", color:"#7e57c2"}}> Browse Potential Pets! </h1>
+      <h1 style={{display:"flex", paddingLeft:"280px", color:"#009688"}}> Browse Potential Pets! </h1>
       </div>
       <div className="routes">
       <Route
@@ -181,15 +183,13 @@ const deletePet = async (pet) => {
         buttonLabel="update pet"/>}
         />
       </Switch>
-      <Link to="/new"><button style={button}>Create New Pet</button></Link>
+      <Link to="/new"><button className="create" style={{color:"navy", backgroundColor:"#00796b", border: "3px solid rgb(56, 56, 56)", borderRadius:"999px", marginLeft:"710px", display:"center"}}>Create New Pet</button></Link>
       </div>
       <footer className="page-footer" style={{backgroundColor:"#7e57c2"}}>
-          <div className="container">
-            <div className="row">
-            </div>
-          </div>
+         
+          
           <div className="footer-copyright">
-            <div className="container" style={{color:"lightblue"}}>
+            <div className="container" style={{color:"rgb(3,169,242)", paddingLeft:"470px"}}>
             © 2021 Copyright Jerald Young
             <a className="light-blue-text 4 right" href="/">Home</a>
             </div>
