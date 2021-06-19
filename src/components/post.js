@@ -7,8 +7,11 @@ import 'materialize-css/dist/css/materialize.min.css';
 const Post = ({post}) => {
   return (
       <div className="post__div" style={{justifyContent: "center", paddingLeft: "150px"}}>
-      <Link to={`/post/${post.id}`} class="card-title activator" style={{color: "navy", fontWeight: "500", display:"flex", marginRight:"300px", }}>{post?.name}<i class="material-icons right">more_vert</i></Link>
-       <div className="card teal" style={{display:"flex", justifyContent: "center", padding: "0px", borderRadius: "920px"}}>
+      
+       <div className="card teal" style={{display:"grid", justifyContent: "center", padding: "0px", borderRadius: "920px", border:"5px solid black"}}>
+       <div className="pet_names" style={{marginTop:"5px", display:"grid"}}>
+      <Link to={`/post/${post.id}`} class="card-title activator" style={{color: "navy", fontSize:"40px" }}>{post?.name}<i class="material-icons right"></i></Link>
+      </div>
     <div class="card-image waves-effect waves-block waves-light" style={{backgroundColor: "black"}}>
       <img className="activator" src={post?.image} style={{backgroundColor: "black"}}/>
     </div>

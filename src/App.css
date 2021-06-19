@@ -57,6 +57,7 @@ justify-content: center;
   border-right:10px solid red;
 }
 
+
 .card:hover:active {
   border-left:10px solid red;
 }
@@ -72,6 +73,15 @@ justify-content: center;
   position:absolute;
   
 }
+
+.card-image:hover {
+  border:5px solid red;
+  transform: scale(1.07);
+  transition: transform 100ms ease-in;
+  overflow:visible;
+}
+
+
 
 .card-content {
   background-color: #7e57c2;
