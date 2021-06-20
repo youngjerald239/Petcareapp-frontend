@@ -79,6 +79,8 @@ justify-content: center;
   transform: scale(1.07);
   transition: transform 100ms ease-in;
   overflow:visible;
+  
+ 
 }
 
 
@@ -91,8 +93,8 @@ justify-content: center;
 }
 
 div .card-content {
-  border-top-right-radius: 999px;
-  border-bottom-right-radius: 999px;
+  /* border-top-right-radius: 999px; */
+  /* border-bottom-right-radius: 999px; */
 }
 
 div .card-content:hover {
