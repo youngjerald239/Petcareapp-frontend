@@ -6,9 +6,11 @@
   padding: 0;
   font-family: 'PT Sans', sans-serif;
   justify-content: center;
+  margin: center;
+  
 }
 .App {
-  background: black;
+  background-image: "https://images.unsplash.com/photo-1525253013412-55c1a69a5738?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80";
   border-radius: 999px;
   display:inline-block;
   
@@ -26,6 +28,8 @@
 display:inline-block;
 position:relative;
 justify-content: center;
+margin-left: -20px;
+
 
 
 
@@ -66,8 +70,7 @@ justify-content: center;
   height:250px;
   width:330px;
   border:black;
-  border-top-left-radius: 999px;
-  border-bottom-right-radius: 999px;
+  border-radius: 90px;
   box-shadow: 0px 5px 8px -9px rgba(0, 0, 0, 0.75);
   border: 5px solid rgb(56, 56, 56);
   position:absolute;
@@ -78,9 +81,10 @@ justify-content: center;
   border:5px solid red;
   transform: scale(1.07);
   transition: transform 100ms ease-in;
-  overflow:visible;
   
- 
+  height: 300px;
+  width: 300px;
+ border-radius: 999px;
 }
 
 
@@ -103,6 +107,7 @@ div .card-content:hover {
 
 div .card-reveal {
   background-color: grey;
+  
 }
 
 .form-container {

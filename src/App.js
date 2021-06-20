@@ -135,7 +135,7 @@ const deletePet = async (pet) => {
   
   
   return (
-    <div className="App" style={{backgroundColor:"#ea80fc "}}>
+    <div className="App" style={{backgroundColor:"#ea80fc"}}>
    <nav>
     <div className="nav-wrapper" style={{backgroundColor:"#7e57c2"}}>
       <a href="/" className="brand-logo center" style={{color:"rgb(3,169,242)", fontWeight: "500", fontSize: "40px"}}><img style={{height:"45px"}} src="https://i.imgur.com/P1sZd9S.png?1"></img>The Kat & KaPoodle</a>

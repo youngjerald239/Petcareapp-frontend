@@ -35,27 +35,31 @@ const Form = ({ initialPet, handleSubmit, buttonLabel, history }) => {
 
   // Our Form, an input for the subject and details fields and a submit button
   return (
-    <form onSubmit={handleSubmisson}>
+    <form style={{marginTop:"150px", marginBottom:"150px", marginRight:"500px"}} onSubmit={handleSubmisson}>
       <input
         type="text"
+        placeholder="Enter pet's name"
         onChange={handleChange}
         value={formData.name}
         name="name"
       />
       <input
         type="image"
+        placeholder="Enter pet's image"
         onChange={handleChange}
         value={formData.image}
         name="image"
       />
       <input
         type="text"
+        placeholder="Enter pet's Breed"
         onChange={handleChange}
         value={formData.breed}
         name="breed"
       />
       <input
         type="integer"
+        placeholder="Enter pet's Age"
         onChange={handleChange}
         value={formData.age}
         name="age"

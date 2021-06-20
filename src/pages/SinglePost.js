@@ -9,14 +9,14 @@ const SinglePost = ({ posts, match, edit, deletePet }) => {
 
   return (
       <div className="single_post" style={{padding: "200px"}}>
-      <div class="col s12 m7">
+      <div class="col s12 m7" style={{marginTop:"-200px", marginBottom:"-200px"}}>
       <h1 class="header" style={{color: "#00796b", fontWeight: "600"}}>{post?.name}</h1>
-      <div class="card horizontal" style={{backgroundColor: "rgb(0,150,136)"}}>
-      <div class="card-image2" style={{overflow:"hidden", display:"flex"}}>
+      <div class="card horizontal" style={{backgroundColor: "rgb(0,150,136)", borderRadius:"99px", border:"black solid 5px"}}>
+      <div class="card-image2" style={{overflow:"hidden", display:"flex", borderRadius:"99px", border:"gray solid 5px"}}>
           <img src={post?.image}/>
           </div>
           <div class="card-stacked">
-          <div class="card-content">
+          <div class="card-content"  style={{borderRadius:"99px", border:"gray solid 5px"}}>
           <h2 style={{color: "rgb(3,169,242)", fontWeight: "300"}}>{post?.breed}</h2>
           <h3 style={{color: "#64ffda", fontWeight: "600"}}>Age:{post?.age}</h3>
           <h2>{post?.adopted}</h2>
