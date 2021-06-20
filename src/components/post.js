@@ -6,11 +6,11 @@ import 'materialize-css/dist/css/materialize.min.css';
 // destructure the post from props
 const Post = ({post}) => {
   return (
-      <div className="post__div" style={{justifyContent: "center", paddingLeft: "150px"}}>
+      <div className="post__div" style={{justifyContent: "center", paddingLeft: "150px", textDecoration:"underline"}}>
       
        <div className="card teal" style={{display:"grid", justifyContent: "center", padding: "0px", borderRadius: "920px", border:"5px solid black", textAlign:"center"}}>
        <div className="pet_names" style={{marginTop:"5px", display:"grid"}}>
-      <Link to={`/post/${post.id}`} class="card-title activator" style={{color: "navy", fontSize:"40px" }}>{post?.name}<i class="material-icons right"></i></Link>
+      <Link to={`/post/${post.id}`} class="card-title activator" style={{color: "navy", fontSize:"40px" }}>{post?.name}<img style={{height:"20px"}} src="https://i.imgur.com/P1sZd9S.png?1"></img></Link>
       </div>
     <div class="card-image waves-effect waves-block waves-light" style={{backgroundColor: "black"}}>
       <img className="activator" src={post?.image} style={{backgroundColor: "black"}}/>
