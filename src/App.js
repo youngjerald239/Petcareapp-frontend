@@ -8,6 +8,7 @@ import { Widget, addResponseMessage, addLinkSnippet, addUserMessage  } from 'rea
 import FormLog from "./pages/FormLog";
 import 'react-chat-widget/lib/styles.css';
 
+
 // Import React and hooks
 import React, { useState, useEffect } from "react";
 
@@ -135,7 +136,7 @@ const deletePet = async (pet) => {
   
   
   return (
-    <div className="App" style={{backgroundColor:"#ea80fc"}}>
+    <div className="App" style={{backgroundColor:"#7e57c2"}}>
    <nav>
     <div className="nav-wrapper" style={{backgroundColor:"#7e57c2"}}>
       <a href="/" className="brand-logo center" style={{color:"rgb(3,169,242)", fontWeight: "500", fontSize: "40px"}}><img style={{height:"45px"}} src="https://i.imgur.com/P1sZd9S.png?1"></img>The Kat & KaPoodle</a>
@@ -186,9 +187,7 @@ const deletePet = async (pet) => {
       <Link to="/new"><button className="create" style={{color:"navy", backgroundColor:"#00796b", border: "3px solid rgb(56, 56, 56)", borderRadius:"999px", marginLeft:"710px", display:"center"}}>Create New Pet</button></Link>
       </div>
       <footer className="page-footer" style={{backgroundColor:"#7e57c2"}}>
-         
-          
-          <div className="footer-copyright">
+      <div className="footer-copyright">
             <div className="container" style={{color:"rgb(3,169,242)", paddingLeft:"470px"}}>
             © 2021 Copyright Jerald Young
             <a className="light-blue-text 4 right" href="/">Home</a>
