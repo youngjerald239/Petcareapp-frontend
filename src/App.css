@@ -1,5 +1,25 @@
 @import url('https://fonts.googleleapis.com/css2?family=PT+Sans&display=swap');
 
+@media all and (max-width: 760px) {
+  .App {
+    max-width: 800px;
+    display:grid;
+    font-size:20px;
+    
+  }
+
+  
+
+ .title {
+   padding-right: 400px;
+  
+ }
+
+ div#root {
+   width:900px;
+ }
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
