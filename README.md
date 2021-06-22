@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# The Kat & KaPoodle 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+Pet Care and adoption App
+### Project Links
+- [Back end repo](https://github.com/youngjerald239/Petcareapp-backend) 
+- [Front end repo](https://github.com/youngjerald239/Petcareapp-frontend)
+- [Live Project Link](https://pet-care2.netlify.app/)
+### Wireframes and Architecture
 
-## Available Scripts
+- [Notion](https://www.notion.so/UNIT-4-PROJECT-Capstone-3cef03caa4d0491b83d03c81f177afa5)
 
-In the project directory, you can run:
+### Time/Priority Matrix
+| Component | Priority | Estimated Time | Time Invested | Actual Time |Completed|
+| --- | :---: |  :---: | :---: | :---: |:---:|
+| Git management | H | 8hrs | 10hrs | 8hrs| X | 
+| Q&A and bug fixes | H | 8hrs | 10hrs | 8hrs | X |
+| Connection | H | 1hr | 1hr | 1hr | X |
+| Express  | H | 1hr | 1hrs | 1hr | X |
+| Routes | H | 2hrs | 2hrs | 2hrs | X|
+| Controllers | H | 3hrs | 1hrs | 1hr | X |
+| Seed | H | 4hrs | 1hrs | 1hr | X |
+| Deployment | H | 2hrs | 1hrs | 1hrs |X|
+| Install and set up react router | H | 0.5hrs | 0.5hrs |0.5hrs |X|
+| Switch, Links, Routes | H | 2hrs | 1hrs | 1hr | X |
+| Header (Footer)| H | 2hrs | 2hrs | 2hrs | X |
+| Pet Display List from Backend | H | 4hrs | 1hrs | 1hrs | X |
+| CRUD options | H | 6hrs | 3hrs | 3hrs | X |
+| Create Form | H | 5hrs | 3hrs | 3hrs | X |
+| Connecting Form to backend | H | 2hrs| 2hrs | 2hrs | X |
+| Presentation Outline | H | 4hrs | 1hrs | 0.5hr | X |
+| Responsiveness | H | 5hrs | 1hr | 1hr | X | 
+| Extra Styling | L | 2hrs | 4hrs |  4hrs | X |
+| Total | H | 86.5hrs| 45.5hrs | 41hrs |X|
 
-### `yarn start`
+## MVP/Post-MVP
+### MVP
+- The app is deployed fully deployed (Front-end and the Back-end).
+- CRUD Functionality
+- repo has a README.md that adequately documents the project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Post-MVP
+- JWT Authentication
+- Edit Pets
+- My Pets page
+- Profile page
+- Adoption button
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Components - Descriptions
 
-### `yarn test`
+- App - contains routes to all components
+- SignUp/Login - Splash page component that displays SignUp and Login buttons
+- Footer/Nav - allows user to navigate between components
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Additional Libraries
+- Materialize css
 
-### `yarn build`
+# Code Snippets
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+//Function for message widget
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    useEffect(() => {
+    addResponseMessage('Welcome to The Kat & KaPoodle chat section!');
+  }, []);
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  const handleNewUserMessage = (newMessage) => {
+    console.log(`New message incoming! ${newMessage}`);
+     
+  };
+```  

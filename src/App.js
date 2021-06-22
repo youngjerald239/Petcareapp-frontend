@@ -9,6 +9,7 @@ import FormLog from "./pages/FormLog";
 import 'react-chat-widget/lib/styles.css';
 
 
+
 // Import React and hooks
 import React, { useState, useEffect } from "react";
 
@@ -161,6 +162,7 @@ const deletePet = async (pet) => {
         path="/signup"
         render={(routerProps) => <FormLog/>}/>
       <Switch>
+      
         <Route
           exact
           path="/"
