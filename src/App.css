@@ -87,13 +87,14 @@ margin-left: -20px;
 }
 
 .card-image {
-  height:250px;
+  height:220px;
   width:330px;
   border:black;
   border-radius: 33px;
   box-shadow: 0px 5px 8px -9px rgba(0, 0, 0, 0.75);
   border: 5px solid rgb(56, 56, 56);
   position:absolute;
+  
   
 }
 
