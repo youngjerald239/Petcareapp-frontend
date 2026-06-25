@@ -1,9 +1,14 @@
-import React from "react"
-import Post from "../components/post"
+import React from "react";
+import Post from "../components/post";
 
-const AllPosts = (props) => {
-    // For each post in the array render a Post component
-    return props.posts.map((post) => <Post post={post} key={post.id}/>)
-}
+const AllPosts = ({ posts }) => {
+  return (
+    <div className="cards-grid">
+      {posts.map((post) => (
+        <Post post={post} key={post.id} />
+      ))}
+    </div>
+  );
+};
 
-export default AllPosts
+export default AllPosts;

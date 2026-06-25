@@ -1,204 +1,139 @@
-import "./App.css"
-import "materialize-css"
-// Import All Our Components
+import "./App.css";
+import "materialize-css";
+import React, { useState, useEffect } from "react";
+import { Route, Switch, Link } from "react-router-dom";
+import { Widget, addResponseMessage } from "react-chat-widget";
+import "react-chat-widget/lib/styles.css";
+
 import AllPosts from "./pages/AllPosts";
 import SinglePost from "./pages/SinglePost";
-import Form from "./pages/Form";
-import { Widget, addResponseMessage, addLinkSnippet, addUserMessage  } from 'react-chat-widget';
 import FormLog from "./pages/FormLog";
-import 'react-chat-widget/lib/styles.css';
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000/api/pets";
 
+function App() {
+  const [pets, setPets] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-// Import React and hooks
-import React, { useState, useEffect } from "react";
-
-// Import components from React Router
-import { Route, Switch, Link } from "react-router-dom";
-
-
-
-
-function App(props) {
   useEffect(() => {
-    addResponseMessage('Welcome to The Kat & KaPoodle chat section!');
+    addResponseMessage("Welcome to Pet Adoption Support!");
+    fetchPets();
   }, []);
 
-  const handleNewUserMessage = (newMessage) => {
-    console.log(`New message incoming! ${newMessage}`);
-    // Now send the message throught the backend API
-    
-  };
-  ////////////////////
-  // Style Objects
-  ////////////////////
-
-  const h1 = {
-    textAlign: "center",
-    margin: "10px",
-  };
-
-  const button = {
-    backgroundColor: "rgb(0,150,136)",
-    display: "flex",
-    margin: "auto",
+  const fetchPets = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch(BACKEND_URL);
+      if (!response.ok) {
+        throw new Error("Unable to load pets");
+      }
+      const data = await response.json();
+      setPets(data);
+      setError("");
+    } catch (fetchError) {
+      setError("Sorry, we could not load pets right now.");
+      console.error(fetchError);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  ///////////////
-  // State & Other Variables
-  ///////////////
-
-  // Our Api Url
-  const url = "https://petcareapp-backend.herokuapp.com/";
-  
-  // State to Hold The List of Posts
-  const [posts, setPosts] = useState([]);
-
-  // an object that represents a null pet
-const nullPet = {
-  name: "",
-  image: "",
-  breed: "",
-  age: "Number",
-  adopted: "Boolean"
-};
-
-  //////////////
-  // Functions
-  //////////////
-
-  // Function to get list of Pets from API
-
-  const getPets = async () => {
-    const response = await fetch(url+"cats");
-    const data = await response.json();
-    setPosts(data);
+  const handleNewUserMessage = (message) => {
+    console.log("New chat message:", message);
+    addResponseMessage("Thanks! We will help you find the perfect pet.");
   };
 
-// const state to hold pet to edit
-const [targetPet, setTargetPet] = useState(nullPet)
-  // Function to add pet from form data
-  const addPets = async (newPet) => {
-    const response = await fetch(url, {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newPet),
-    });
-  
-    // get updated list of pets
-    getPets();
-  };
-
-  // Function to select pet to edit
-const getTargetPet = (pet) => {
-  setTargetPet(pet);
-  props.history.push("/edit");
-};
-
-// Function to edit pet on form submission
-const updatePet = async (pet) => {
-  const response = await fetch(url + pet.id + "/", {
-    method: "put",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(pet),
-  });
-
-  // get updated list of pets
-  getPets();
-};
-
-// Function to delete pet on form submission
-const deletePet = async (pet) => {
-  const response = await fetch(url + pet.id + "/", {
-    method: "delete",
-  });
-
-  // get updated list of songs
-  getPets();
-  props.history.push("/");
-};
-
-
-  //////////////
-  // useEffects
-  //////////////
-
-  // useEffects to get list of pets when page loads
-  useEffect(() => {getPets()}, [])
-
-  /////////////////////
-  // returned JSX
-  /////////////////////
-
-  
-  
   return (
-    <div className="App" style={{backgroundColor:"#7e57c2"}}>
-   <nav>
-    <div className="nav-wrapper" style={{backgroundColor:"#7e57c2"}}>
-      <a href="/" className="brand-logo center" style={{color:"rgb(3,169,242)", fontWeight: "500", fontSize: "40px"}}><img style={{height:"45px"}} src="https://i.imgur.com/P1sZd9S.png?1"></img>The Kat & KaPoodle</a>
-      <ul id="nav-mobile" className="right hide-on-med-and-down">
-        <li><a href="/mypets" style={{color:"rgb(3,169,242)", fontWeight: "500", fontSize: "20px"}}>My Pets</a></li>
-        <li><a href="/profile" style={{color:"rgb(3,169,242)", fontWeight: "500", fontSize: "20px", paddingRight:"2px"}}>Profile</a></li>
-        <li><a href="/signup" style={{color:"rgb(3,169,242)", fontWeight: "500", fontSize: "20px", paddingRight:"2px"}}>Sign up</a></li>
-      </ul>
-    </div>
-  </nav>
-  <div className="widget">
-  <Widget handleNewUserMessage={handleNewUserMessage}
-          profileAvatar={"https://images.unsplash.com/photo-1568572933382-74d440642117?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"}
-          title="Welcome to our chat section"
-          subtitle="See what others have to say"/>
-          </div>
-          <div className="title">
-      <h1 style={{display:"flex", paddingLeft:"280px", color:"#009688"}}> Browse Potential Pets! </h1>
-      </div>
-      <div className="routes">
-      <Route
-        path="/signup"
-        render={(routerProps) => <FormLog/>}/>
-      <Switch>
-      
-        <Route
-          exact
-          path="/"
-          render={(routerProps) => <AllPosts {...routerProps} posts={posts} />}
-        />
-        
-        <Route
-          path="/post/:id"
-          render={(routerProps) => (
-            <SinglePost {...routerProps} posts={posts} edit={getTargetPet} deletePet={deletePet} />
-          )}
-        />
-        <Route
-          path="/new"
-          render={(routerProps) => (<Form {...routerProps} initialPet={nullPet} handleSubmit={addPets} buttonLabel="create pet"/>)}
-        />
-        <Route
-          path="/edit"
-          render={(routerProps) => <Form {...routerProps} initialPet={targetPet}
-        handleSubmit={updatePet}
-        buttonLabel="update pet"/>}
-        />
-      </Switch>
-      <Link to="/new"><button className="create" style={{color:"navy", backgroundColor:"#00796b", border: "3px solid rgb(56, 56, 56)", borderRadius:"999px", marginLeft:"710px", display:"center"}}>Create New Pet</button></Link>
-      </div>
-      <footer className="page-footer" style={{backgroundColor:"#7e57c2"}}>
-      <div className="footer-copyright">
-            <div className="container" style={{color:"rgb(3,169,242)", paddingLeft:"470px"}}>
-            © 2021 Copyright Jerald Young
-            <a className="light-blue-text 4 right" href="/">Home</a>
+    <div className="App">
+      <div className="page-shell">
+        <header className="site-header">
+          <div className="logo-wrapper">
+            <img
+              src="https://i.imgur.com/P1sZd9S.png?1"
+              alt="Kat & KaPoodle logo"
+            />
+            <div>
+              <p className="eyebrow">Pet Adoption</p>
+              <h1>Kat & KaPoodle Rescue</h1>
+              <p className="hero-copy">
+                Browse a curated selection of adoptable cats and dogs from a
+                connected pet adoption backend.
+              </p>
             </div>
           </div>
+
+          <nav className="main-nav">
+            <Link to="/">Home</Link>
+            <Link to="/signup">Sign Up</Link>
+            <a href="#pets">Browse Pets</a>
+          </nav>
+        </header>
+
+        <main className="main-content">
+          <Switch>
+            <Route exact path="/">
+              <section className="hero">
+                <div className="hero-copy-block">
+                  <p className="eyebrow">Adopt a Friend</p>
+                  <h2>Find a loving pet that matches your lifestyle.</h2>
+                  <p>
+                    We connect to a pet adoption API and surface ready-to-adopt
+                    cats and dogs with clear details and beautiful photos.
+                  </p>
+                  <Link className="cta-button" to="#pets">
+                    Browse adoptable pets
+                  </Link>
+                </div>
+                <div className="hero-visual" />
+              </section>
+
+              <section id="pets" className="pet-list">
+                <div className="section-heading">
+                  <div>
+                    <h2>Ready for Adoption</h2>
+                    <p>
+                      Scroll through the latest adoptable pets and click any
+                      card for more details.
+                    </p>
+                  </div>
+                </div>
+
+                {loading ? (
+                  <div className="status-message">Loading adoptable pets...</div>
+                ) : error ? (
+                  <div className="status-message error">{error}</div>
+                ) : (
+                  <AllPosts posts={pets} />
+                )}
+              </section>
+            </Route>
+
+            <Route path="/signup" component={FormLog} />
+
+            <Route
+              path="/post/:id"
+              render={(routerProps) => (
+                <SinglePost {...routerProps} pets={pets} />
+              )}
+            />
+          </Switch>
+        </main>
+
+        <footer className="site-footer">
+          <p>Kat & KaPoodle — modern adoption browsing for rescue pets.</p>
+          <span>© 2026 Kat & KaPoodle</span>
         </footer>
+      </div>
+
+      <Widget
+        handleNewUserMessage={handleNewUserMessage}
+        profileAvatar="https://images.unsplash.com/photo-1568572933382-74d440642117?auto=format&fit=crop&w=80&q=80"
+        title="Adoption Help"
+        subtitle="Ask questions about pets and adoption."
+      />
     </div>
   );
 }
-
 
 export default App;
