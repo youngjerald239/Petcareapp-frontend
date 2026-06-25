@@ -9,7 +9,35 @@ import AllPosts from "./pages/AllPosts";
 import SinglePost from "./pages/SinglePost";
 import FormLog from "./pages/FormLog";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000/api/pets";
+const CAT_API = "https://api.thecatapi.com/v1/images/search?limit=6&has_breeds=1";
+const DOG_API = "https://api.thedogapi.com/v1/images/search?limit=6&has_breeds=1";
+
+const catNames = ["Luna", "Cleo", "Misty", "Willow", "Pebble", "Nova"];
+const dogNames = ["Finn", "Milo", "Harley", "Bailey", "Scout", "Juno"];
+const locations = ["Seattle, WA", "Austin, TX", "Portland, OR", "Denver, CO", "Miami, FL", "Boston, MA"];
+
+const randomFrom = (items) => items[Math.floor(Math.random() * items.length)];
+const randomAge = () => `${Math.floor(Math.random() * 8) + 1} years`;
+const randomGender = () => (Math.random() > 0.5 ? "Female" : "Male");
+
+const buildPet = (item, type, name, location) => {
+  const breed = item.breeds && item.breeds.length ? item.breeds[0].name : "Mixed breed";
+  const temperament = item.breeds && item.breeds.length ? item.breeds[0].temperament : "gentle and curious";
+  const description = `A ${breed} that is ${temperament.toLowerCase()}.`;
+
+  return {
+    id: item.id,
+    name,
+    type,
+    breed,
+    age: randomAge(),
+    gender: randomGender(),
+    location,
+    adopted: false,
+    image: item.url,
+    description,
+  };
+};
 
 function App() {
   const [pets, setPets] = useState([]);
@@ -24,12 +52,28 @@ function App() {
   const fetchPets = async () => {
     try {
       setLoading(true);
-      const response = await fetch(BACKEND_URL);
-      if (!response.ok) {
+      const [catResponse, dogResponse] = await Promise.all([
+        fetch(CAT_API),
+        fetch(DOG_API),
+      ]);
+
+      if (!catResponse.ok || !dogResponse.ok) {
         throw new Error("Unable to load pets");
       }
-      const data = await response.json();
-      setPets(data);
+
+      const [catData, dogData] = await Promise.all([
+        catResponse.json(),
+        dogResponse.json(),
+      ]);
+
+      const cats = catData.map((item, index) =>
+        buildPet(item, "Cat", catNames[index % catNames.length], randomFrom(locations))
+      );
+      const dogs = dogData.map((item, index) =>
+        buildPet(item, "Dog", dogNames[index % dogNames.length], randomFrom(locations))
+      );
+
+      setPets([...cats, ...dogs]);
       setError("");
     } catch (fetchError) {
       setError("Sorry, we could not load pets right now.");
