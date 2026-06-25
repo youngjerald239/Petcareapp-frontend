@@ -4,7 +4,7 @@ import validateInfo from '../components/validateInfo'
 import "./FormLog.css"
 
 const FormSignup = (submitForm) => {
-    const {handleChange, values, handleSubmit, errors} = useForm(submitForm, validateInfo)
+    const {handleChange, handleSubmit} = useForm(submitForm, validateInfo)
 
     return (
        <div className="form-content-right">
@@ -31,7 +31,7 @@ const FormSignup = (submitForm) => {
                     <i class="material-icons right">send</i>
                 </button>
                 <span className="form-input-login">
-                   Already have an account? Login <a href="">here</a> 
+                   Already have an account? Login <a href="/login">here</a> 
                 </span>
            </form>
        </div>
